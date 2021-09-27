@@ -1,0 +1,21 @@
+﻿
+:host
+{
+  box-shadow: -3px 0px 24px #00000029;
+  border-radius: 0 0 65px 65px;
+  opacity: 1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+:host
+{
+  background: #FFFFFF 0 0 no-repeat padding-box;
+}
+
+.attendance-component
+{
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+

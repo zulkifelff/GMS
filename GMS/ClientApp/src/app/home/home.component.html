@@ -1,0 +1,45 @@
+<style>
+  #myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+  /* Add some content at the bottom of the video/page */
+  .content {
+    position: fixed;
+    bottom: 0;
+    left:0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+  }
+
+  /* Style the button used to pause/play the video */
+  #myBtn {
+    width: 200px;
+    left: 0;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background: #EABF51;
+    color: black;
+    cursor: pointer;
+  }
+
+    #myBtn:hover {
+      background: black;
+      color: #EABF51;
+    }
+</style>
+<video autoplay muted loop id="myVideo">
+  <source src="../../assets/Static/Videos/exercise.mp4" type="video/mp4">
+</video>
+
+<div class="content">
+  <h1>Welcome to Safa Fitness Center</h1>
+  <p>The ultimate gold standard of fitness in twin city</p>
+  <button class="" id="myBtn" (click)="ContinueApplication($event)">Continue</button>
+</div>

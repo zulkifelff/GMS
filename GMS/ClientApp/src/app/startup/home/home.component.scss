@@ -1,0 +1,88 @@
+//colors
+$color_new_orleans_approx: rgba(242, 220, 164, 1);
+$white: rgba(255, 255, 255, 1);
+
+.stats-section {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.stats-section-styling {
+  background: $color_new_orleans_approx 0 0 no-repeat padding-box;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 0 12px #00000029;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 32px;
+  text-align: center;
+  align-items: center;
+  align-content: space-around;
+  justify-content: center;
+  flex-direction: row;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  cursor: pointer;
+  span {
+    text-align: center;
+    &.text {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+}
+.icon {
+  margin-right: 5px;
+  background-size: contain;
+}
+.icon-membership {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABHNCSVQICAgIfAhkiAAAAPJJREFUSEtjZGBgEADieiBOgLKBFM3AB6DJC4C4kBFITADifJpZhd3giSCLQa7gp7PFD0AW/0eyFMSnJYDbNWrxaFBTO6GNJi54iA5Y4qJ2nOI0D70AGbWYZiGAHtSNNLMJYjCo3geD0UqigcZBDTcfFNQXgFifxhaiG78RZLEBEB8AYno1fz4C7XKAFZEKIA4Qg2hsAJ4aiQwZXLnjAVD/BiD+QGzZjNwuI8ZuguYSVAC1ZdRiQsFNMCQJKsAR1AeB4rA8CaLt0VxC0FyCCtAshlkIyn7IAJQjkB1A0FyCCqCmgywCGYxuIXqQwxwAovECADEBOl3x4E+4AAAAAElFTkSuQmCC");
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+}
+.icon-person {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAbCAYAAAAZMl2nAAAABHNCSVQICAgIfAhkiAAAAetJREFUSEvtlk0oRFEYhmewsSEpkjArC+VnySwYSxY2FGVhZCcpO9mYHSsWthYUSYoiWTKlhPK7kRUp+UukkA3PV1ddt3vPPcedmdV89TRzzn3Pd9459zvnTDgUPMKkGIB2qIdSOIFDmIIbnSkkSZAoY/AStHgkeaN/EBb8JglipIjkp1DhNwnP4zCv0gUxMmu9Eg0foQ9ElfDkJf6vkWIS3kGejgtLM8bnRKqN9Oq8d8eke7SjJkYiiKvgFaT63WJU9es8xkjhFpgYSSAehyTEPAYO0T9j8FpE+gglqTbSSEJZapPYQNyRaiNS5BdQbeCkE+1qqo1Ivi5Y0TRygE5W8VtlZMchiNAWXsBZrCOOvgRtqSdVXPKwFW5VIlliT5cuAyWhGLdHG405cCvEafrl/Pj0MRsSI/Kr7BGjIXfHtTWB/ZlMeOWSVA62OqgFOezOQC49OQK0wu1kFWN+21cruYkoa8S5WkFWRK7/JpBt2QwNkGub4IHvuxZy+B3Bl9frMr195SqPQzfUmNQA2ndYh0XYhD+7VddIOQOliMWEydXv5fXc2hBrvwIdI8OIJyHfcAV05FuI+uHez0gPIvlPms7YJ3lUZSQHwTMUptOFlbtPZUR2wXEGTMgUyyojMQTbGTKSzBpxrHTyByw4XGRTSvdzAAAAAElFTkSuQmCC");
+  height: 27px;
+  width: 34px;
+  display: inline-block;
+}
+.icon-person-edit {
+  width: 38px;
+  height: 30px;
+  display: inline-block;
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAeCAYAAABAFGxuAAAABHNCSVQICAgIfAhkiAAAAghJREFUWEftl/9RQjEMx2ECdQPcQCcQN9AJxA1kA51AnECcQDcQJ1AnkA3UCfT74QhXvP5I36t/eGfucu8BafJpmjZlOPDJrszOpBPpwXrIUs8H6Y2U96YydHgD5loKXEpm+mHq8OU2KYEBdev0NpfdudO2aJYDG2v0Y9HDtsGVPl5Wjoma58CAAq5GPmS8VzMgZZsCo57eOwY41Tg2RS9JgXVZRgNpspz/YLXr+udqjAkupEeVM/2Ufe4gdrtrfY5x+tMFekvLk/9ONJPeRGsHJTDMCEYWdjJBaeQXHaG4FNCLOZxpaTwHHjDsqBsAT4K6e9X7Yg297AFFh7G6fNH7MXBesI5xs8PIVAhlxiu4EhgzGUkxzgk2SE3mACPjsRKZxsC4ELJkqAkB6X8AWnCgcY6dXR6xx2Yupe5igi2KTQpuK2MEupeOEw5rv2YCNPQw2+HyUegxuNX3ljGgnqWj2ugFe3bYvpRnrKZ+wrGzgd3syi53L88cwsCxQseH2ZCc1VFhYCxd7U21FZT5Iass/UZYSlJHwbcUT6YsntluxQfsTTpqSNUbypbyqyGUNfHU4RmGimYqrLGWYFYr/F+wNhObdxbqNzJGaQCU+yNThDIwtmju5uBdabskjjUgtctdUAbWalc+ySFQKTA3lIGR+pmUntcnc7SeQymFTxchg9aO8E+vdcs3sudu30Gtd74AAAAASUVORK5CYII=");
+}
+.icon-delete {
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAeCAYAAADZ7LXbAAAABHNCSVQICAgIfAhkiAAAAQ9JREFUSEvtloENgkAMRWUCHUEn0A2EDRzBEXQCcQIdQScRN3AEnUA30P8Ipxc9OEIOYwxNmhxt6b/22rtGvWqaSH0QDyrMltJtq9xEHpBU+pXH5ih9HAIkkZPM4eguWS0QUjEu2clccnghPjlsAEaO3kUXCc+kC6MyEE+maqlHgBBym5R8DSRtMwz53vlKOAi+AaHpNkE8vpzsiYJPAxJrTWeHpLWc5Ufx/yAmVMLl7jLXSqb11MqAfa28p9ybrg7ErtAuXfnD1VVXPgi4KqNrRi7f3+iTs3YCDwtmormJedwYoShliLNEjh45ekPeSCzbxssPEHZxbezO/eNzRrYHCabAVNwPAMboOitS2XsAjUKf3z8bN1IAAAAASUVORK5CYII=");
+  width: 25px;
+  height: 30px;
+  display: inline-block;
+}
+.attendance-section-styling {
+  background: $white 0 0 no-repeat padding-box;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 0 12px #00000029;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 32px;
+  padding: 24px 30px;
+  opacity: 1;
+}
+.statistics-section-styling {
+  background: $white 0 0 no-repeat padding-box;
+  //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+  box-shadow: 0 0 12px #00000029;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 32px;
+  padding: 24px 30px;
+  opacity: 1;
+}
+.table-attendence-design {
+}
+.table.table-attendence-design {
+  tbody td {
+    font-size: 14px !important;
+    vertical-align: initial;
+  }
+  thead th {
+    font-size: 14px;
+    vertical-align: initial;
+  }
+}

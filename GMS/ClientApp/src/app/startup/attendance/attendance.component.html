@@ -1,0 +1,156 @@
+<section class="attendance-component mt-40 pl-15 pr-15">
+  <app-right-navigation [headingVar]="passingHeading">
+
+  </app-right-navigation>
+
+  <div class="row no-gutters clearfix mt-60 table-view">
+
+    <div class="container">
+
+      <div class="row no-gutters mt-30 pl-15 pr-15 positional-table-filter">
+        <div class="">
+          <span class="text-left">List of Today’s Attendance</span>
+        </div>
+
+        <div class="" style="font-size: 10px">
+          <span class="text-left">
+            <mat-form-field appearance="outline">
+  <mat-label>Enter a date range</mat-label>
+  <mat-date-range-input [rangePicker]="picker">
+    <input matStartDate placeholder="Start date" #dateRangeStart>
+    <input #dateRangeEnd (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)" matEndDate placeholder="End date">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
+</mat-form-field>
+
+          </span>
+          <span class="text-right">
+            <select class="filter-table-selection">
+              <option value="01">
+                Today
+              </option>
+
+               <option selected value="02">
+                Yesterday
+              </option>
+            </select>
+          </span>
+        </div>
+
+
+      </div>
+      <div class="table-responsive row no-gutters mt-30">
+        <table class="table table-borderless table-attendence-design">
+          <thead>
+          <tr>
+            <th scope="col">Member ID <span class="sorting-icon"></span></th>
+            <th scope="col">Name</th>
+            <th scope="col">Reg Date</th>
+
+            <th scope="col">Package DD</th>
+            <th scope="col">Attendance Data</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>001</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+
+          <tr>
+            <td>002</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>004</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>005</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>006</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>007</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>008</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>009</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+          <tr>
+            <td>010</td>
+            <td>Kazi Akbar</td>
+            <td>21-Aug-1994</td>
+            <td>21-Aug</td>
+            <td>Exclusinve Package</td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="row no-gutters clearfix mt-20 pagination-styling-table">
+
+    <div class="clearfix">
+      <span class="pagination-textual-style">
+        Showing 10 out of 230
+      </span>
+      <pagination
+        class=""
+        style="display: inline-block"
+        [boundaryLinks]="true"
+                  [totalItems]="77"
+                  previousText="<"
+                  nextText=">"
+                  firstText="<<"
+                  lastText=">>">
+      </pagination>
+    </div>
+
+
+  </div>
+</section>

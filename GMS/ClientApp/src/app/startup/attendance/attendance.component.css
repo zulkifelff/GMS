@@ -1,0 +1,9 @@
+:host
+{
+  background: #FFFFFF 0 0 no-repeat padding-box;
+  box-shadow: -3px 0 24px #00000029;
+  border-radius: 0 0 65px 65px;
+  opacity: 1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}

@@ -1,0 +1,52 @@
+<!--<p>index works!</p>-->
+
+<nav id="sidebar" class="">
+<!--  <div class="custom-menu">-->
+<!--    <button (click)="toggleActivation($event)" type="button" id="sidebarCollapse" class="btn btn-primary">-->
+<!--    </button>-->
+<!--  </div>-->
+  <div class="img bg-wrap text-center py-4 "
+       style="">
+    <div class="user-logo mt-40">
+      <span class="mega-group-logo-header"></span>
+    </div>
+  </div>
+  <ul class="list-unstyled components mb-5">
+    <li routerLinkActive="active">
+      <a [routerLink]="['home']"> Home</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['members']"> Members</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['attendance']">Attendance</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['roles']">User Roles</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['package']">Packages</a>
+    </li>
+    <li routerLinkActive="active">
+      <a [routerLink]="['reports']">Reports</a>
+    </li>
+    <!--    <li>-->
+    <!--      <a href="#">Sign Out</a>-->
+    <!--    </li>-->
+  </ul>
+  <div class="user-avatar mt-60 positional-padding-avatar">
+
+    <span style="background-image: url('/assets/Static/Images/woman-photo.png')" class="user-avatar-style"></span>
+    <p class="user-navigation-name">
+      Muhammad Ali
+    </p>
+
+    <p class="user-role-style">
+      Admin
+    </p>
+
+    <a href="#" class="user-profile-link">View Profile</a>
+
+  </div>
+</nav>
+

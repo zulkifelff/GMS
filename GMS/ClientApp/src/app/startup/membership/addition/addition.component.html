@@ -1,0 +1,54 @@
+<section class="addition-component mt-40 pl-15 pr-15">
+
+
+  <div class="row no-gutters clearfix mt-60 table-view">
+
+    <div class="container">
+
+<!--      Heading Section-->
+      <div class="col-md-12 col-sm-12 no-gutters">
+        <div class="float-left">
+          <span>Add New Member</span>
+          <span>
+            Member ID:
+            <span>
+              25645
+            </span>
+          </span>
+        </div>
+
+        <div class="float-right">
+          <span>
+            Step <span>1</span> out of <span>2</span>
+          </span>
+
+        </div>
+      </div>
+
+
+<!--      Form Section-->
+      <div class="col-md-12 col-sm-12 no-gutters mt-60">
+       <div class="float-left">
+         <img class="form-user-avatar-styling" [src]="userImageSource" alt="Profile Avatar">
+       </div>
+
+        <div class="float-left">
+          <p class="subheading-form-user-styling">
+            Profile Picture
+          </p>
+
+          <label class="label-input-file"> Upload Image
+            <input accept="image/*"
+                   (change)="triggerFileChange($event,$event.target.files)"
+                   type="file"
+                   size="60" >
+          </label>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,7 @@
+﻿{
+  "/api/*": {
+    "target": "http://localhost:8090/GMS",
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

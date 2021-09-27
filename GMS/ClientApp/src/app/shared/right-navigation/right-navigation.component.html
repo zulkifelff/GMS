@@ -1,0 +1,45 @@
+<div class="row no-gutters clearfix positional-section-navigation">
+  <div class="col-sm-12 col-md-4">
+    <span class="right-navigation-bar-style">{{headingVar}}</span>
+  </div>
+
+  <div class="col-sm-12 col-md-8 text-right">
+
+
+    <div class="text-right float-right ml-5 positional-icons">
+      <span class="icon-right-navigation fullscreen-btn">
+        <a  tooltip="Toggle Fullscreen" href="javascript:void(0)" (click)="triggerFullScreen($event)">
+
+        </a>
+      </span>
+
+      <span class="icon-right-navigation notification-btn">
+        <a tooltip="Notification" href="#">
+
+        </a>
+      </span>
+
+
+      <span class="icon-right-navigation settings-btn">
+        <a tooltip="Settings" href="#">
+
+        </a>
+      </span>
+
+      <span class="icon-right-navigation switch-btn">
+        <a tooltip="Sidemenu" href="javascript:void(0)" (click)="toggleSideNavigationEvent($event)">
+
+        </a>
+      </span>
+    </div>
+    <div class="text-left float-right">
+      <form>
+        <div class="input-group">
+          <input type="text" class=" search-right-navigation-area" placeholder="Search">
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>

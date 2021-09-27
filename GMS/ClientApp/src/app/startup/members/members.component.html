@@ -1,0 +1,505 @@
+<section class="attendance-component mt-40 pl-15 pr-15">
+  <app-right-navigation [headingVar]="passingHeading">
+
+  </app-right-navigation>
+
+  <div class="row no-gutters clearfix mt-60 table-view">
+
+    <div class="container">
+
+      <div class="row no-gutters mt-30 pl-15 pr-15 positional-table-filter">
+        <div class="">
+          <span class="text-left" style="font-size: 20px;font-weight: bold">List of Members</span>
+        </div>
+
+        <div class="" style="">
+          <span class="text-left mr-2">
+            <button (click)="PrintList($event)" class="outline-button-style">Print List</button>
+          </span>
+          <span class="text-right">
+            <button (click)="AddNewMemberList($event)" class="golden-button-style">Add New Member</button>
+          </span>
+        </div>
+
+
+      </div>
+      <div class="table-responsive row no-gutters mt-30">
+        <ng-container *ngIf="AllMembersData && AllMembersData.length">
+          <table id="content-table" class="table table-borderless table-attendence-design">
+            <thead>
+            <tr>
+              <th scope="col">Member ID <span class="sorting-icon"></span></th>
+              <th scope="col">Name</th>
+              <th scope="col">CNIC</th>
+
+              <th scope="col">Reg Date</th>
+              <th scope="col">Date Of Birth</th>
+              <th scope="col">Package</th>
+              <th scope="col">Actions</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <ng-container *ngFor="let ItemIterate of AllMembersData">
+              <tr>
+                <td>{{ItemIterate.MemberId}}</td>
+                <td>{{ItemIterate.Name}}</td>
+                <td>{{ItemIterate.CNIC}}</td>
+                <td>{{ItemIterate.RegistrationDate | date: 'fullDate' || '--'}}</td>
+                <td>{{ItemIterate.DOB}}</td>
+                <td>{{ItemIterate.Package | date: 'fullDate' || '--'}}</td>
+                <td colspan="2">
+                  <span (click)="UserActionEvent(ItemIterate,EntityStatusEnum.View)" class="view-table-style"></span>
+                  <span (click)="UserActionEvent(ItemIterate,EntityStatusEnum.Edit)" class="edit-table-style"></span>
+                  <span (click)="DeleteUser(ItemIterate)" class="delete-table-style"></span>
+                </td>
+              </tr>
+            </ng-container>
+
+            </tbody>
+          </table>
+
+        </ng-container>
+      </div>
+
+
+    </div>
+
+  </div>
+  <div class="row no-gutters clearfix mt-20 pagination-styling-table">
+
+    <div class="clearfix">
+      <span class="pagination-textual-style">
+        Showing 10 out of 230
+      </span>
+      <pagination
+        class=""
+        style="display: inline-block"
+        [boundaryLinks]="true"
+        [totalItems]="77"
+        previousText="<"
+        nextText=">"
+        firstText="<<"
+        lastText=">>">
+      </pagination>
+    </div>
+
+
+  </div>
+</section>
+
+
+<ng-template #EditUserForm>
+  <div class="sliderHeader">
+    <div class="row">
+      <div class="col-sm-8">
+
+        <h2>
+          <small>
+            <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Edit">
+              Edit Member
+            </ng-container>
+
+            <ng-container *ngIf="currentActionEvent==EntityStatusEnum.View">
+              View Member
+            </ng-container>
+
+            <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Creation">
+              New Member
+            </ng-container>
+
+          </small>
+        </h2>
+      </div>
+      <div class="col-sm-4 text-right">
+
+        <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Edit">
+          <button (click)="UpdateMemberDetails($event)" type="button" class="btn btn-primary">
+            Update
+          </button>
+        </ng-container>
+
+
+        <button (click)="DiscardMemberForm($event)" type="button" class="ml-2 btn btn-outline-warning">
+          Discard
+        </button>
+
+      </div>
+    </div>
+  </div>
+  <div class="sliderBody scrollY lighter" style="max-height: calc(100vh - 88px);">
+    <div class="row">
+      <form class="full-width" *ngIf="EditMemberForm" [formGroup]="EditMemberForm">
+        <div class="col-sm-12 mx-auto">
+
+
+          <div class="row">
+            <div class="col-sm-11">
+
+              <div class="field-group">
+                <label>Profile Picture</label>
+                <img class="img-avatar-view"
+                     src="{{EditMemberForm.controls['field1'].value}}"
+                     alt="{{EditMemberForm.controls['name'].value}}">
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Member Name</mat-label>
+                  <input matInput formControlName="Name">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Email Address</mat-label>
+                  <input type="email" matInput formControlName="Email">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Postal Address</mat-label>
+                  <input matInput formControlName="Address">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>CNIC</mat-label>
+                  <input matInput formControlName="CNIC">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Date Of Birth</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Mobile Number</mat-label>
+                  <input matInput formControlName="Mobile">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-11">
+              <div class="field-group">
+                <mat-form-field appearance="fill">
+                  <mat-label>Gender</mat-label>
+                  <mat-select formControlName="Gender">
+                    <mat-option *ngFor="let Iteration of GenderList" [value]="Iteration.value">
+                      {{Iteration.Key}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+
+<!--<mat-drawer-container hasBackdrop="true">-->
+<!--  <mat-drawer #EditUserForm mode="over" position="end" autoFocus="false">-->
+<!--    <div class="sliderHeader">-->
+<!--      <div class="row">-->
+<!--        <div class="col-sm-8">-->
+<!--          <button mat-icon-button class="mr-3 close-btn">-->
+<!--            <mat-icon fontSet="far" fontIcon="fa-times"></mat-icon>-->
+<!--          </button>-->
+<!--          <h3>-->
+<!--            <small>-->
+<!--              <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Edit">-->
+<!--                Edit Member-->
+<!--              </ng-container>-->
+
+
+<!--              <ng-container *ngIf="currentActionEvent==EntityStatusEnum.View">-->
+<!--                View Member-->
+<!--              </ng-container>-->
+
+<!--            </small>-->
+<!--            <span #tooltip="matTooltip" matTooltip="Add ground Center"-->
+<!--                  matTooltipPosition="below">-->
+<!--              <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Edit">-->
+<!--               Edit Details of Member-->
+<!--            </ng-container>-->
+
+<!--               <ng-container *ngIf="currentActionEvent==EntityStatusEnum.View">-->
+<!--                View Details of  Member-->
+<!--              </ng-container>-->
+
+<!--            </span>-->
+<!--          </h3>-->
+<!--        </div>-->
+<!--        <div class="col-sm-4 text-right">-->
+<!--          <ng-container *ngIf="currentActionEvent==EntityStatusEnum.Edit">-->
+<!--            <button mat-flat-button color="blue" class="mr-2" (click)="UpdateMemberDetails($event)">Save</button>-->
+<!--          </ng-container>-->
+<!--          <button mat-flat-button (click)="DiscardMemberForm($event)" color="transparent">Discard</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="sliderBody scrollY lighter" style="max-height: calc(100vh - 88px);">-->
+<!--      <div class="row">-->
+<!--        <form *ngIf="EditMemberForm" [formGroup]="EditMemberForm">-->
+<!--          <div class="col-sm-8 mx-auto">-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+
+<!--                <div class="field-group">-->
+<!--                  <label>Profile Picture</label>-->
+<!--                  <img class="img-avatar-view"-->
+<!--                       src="{{EditMemberForm.controls['field1'].value}}"-->
+<!--                       alt="{{EditMemberForm.controls['name'].value}}">-->
+<!--                </div>-->
+
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Member Name</mat-label>-->
+<!--                    <input matInput formControlName="Name">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Member Name</mat-label>-->
+<!--                    <input matInput formControlName="Name">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Email Address</mat-label>-->
+<!--                    <input type="email" matInput formControlName="Email">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Postal Address</mat-label>-->
+<!--                    <input matInput formControlName="Address">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>CNIC</mat-label>-->
+<!--                    <input matInput formControlName="CNIC">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Date Of Birth</mat-label>-->
+<!--                    <input matInput [matDatepicker]="picker">-->
+<!--                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+<!--                    <mat-datepicker #picker></mat-datepicker>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field class="example-full-width" appearance="fill">-->
+<!--                    <mat-label>Mobile Number</mat-label>-->
+<!--                    <input matInput formControlName="Mobile">-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="row">-->
+<!--              <div class="col-sm-11">-->
+<!--                <div class="field-group">-->
+<!--                  <mat-form-field appearance="fill">-->
+<!--                    <mat-label>Gender</mat-label>-->
+<!--                    <mat-select formControlName="Gender">-->
+<!--                      <mat-option *ngFor="let Iteration of GenderList" [value]="Iteration.value">-->
+<!--                        {{Iteration.Key}}-->
+<!--                      </mat-option>-->
+<!--                    </mat-select>-->
+<!--                  </mat-form-field>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
+
+
+<!--            &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-11">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="field-group">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-label>Location ID</mat-label>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-select required>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <mat-option value="one">Option 1</mat-option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <mat-option value="two">Option 2</mat-option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <mat-option value="three">Option 3</mat-option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </mat-select>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </mat-form-field>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-9">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="field-group">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-label>Lease Area</mat-label>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <input matInput required>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </mat-form-field>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-2">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="field-group">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-label>Unit</mat-label>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-select>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <mat-option value="one">Feet</mat-option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <mat-option value="two">Meter</mat-option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </mat-select>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </mat-form-field>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-11">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="field-group">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <mat-form-field appearance="outline">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <mat-label>Notes</mat-label>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <textarea matInput maxlength="500" rows="4"></textarea>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </mat-form-field>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-11">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <div class="field-group mb-4 mt-3">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <div class="darg-n-drop small-height">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <input type="file">&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <i class="material-icons mr-2">cloud_upload</i> Drag and drops, or <a href="javascript:void(0);" class="simple-link-new">browse</a> your files.</p>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          <div class="row">&ndash;&gt;-->
+<!--            &lt;!&ndash;            <div class="col-sm-11">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <table class="user-table newUI attchment-list">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <tbody>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td width="46%">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <div class="filename">&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <div class="file-icon">&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <i class="fas fa-file"></i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <div class="name-content">&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <h5>Ground_space.pdf</h5>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <h6>255 KB</h6>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td><strong>By:Ryan</strong> | 04/02/2020 - 3:40 PM</td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td class="text-right">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <button mat-icon-button class="smaller" color="red">&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <mat-icon fontSet="fal" fontIcon="fa-trash-alt"></mat-icon>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </button>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td width="46%">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <div class="filename">&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <div class="file-icon">&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <i class="fas fa-file"></i>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <div class="name-content">&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <h5>Ground_space.pdf</h5>&ndash;&gt;-->
+<!--            &lt;!&ndash;                        <h6>255 KB</h6>&ndash;&gt;-->
+<!--            &lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td><strong>By:Ryan</strong> | 04/02/2020 - 3:40 PM</td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  <td class="text-right">&ndash;&gt;-->
+<!--            &lt;!&ndash;                    <button mat-icon-button class="smaller" color="red">&ndash;&gt;-->
+<!--            &lt;!&ndash;                      <mat-icon fontSet="fal" fontIcon="fa-trash-alt"></mat-icon>&ndash;&gt;-->
+<!--            &lt;!&ndash;                    </button>&ndash;&gt;-->
+<!--            &lt;!&ndash;                  </td>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--            &lt;!&ndash;                </tbody>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </table>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            &lt;!&ndash;          </div>&ndash;&gt;-->
+<!--          </div>-->
+
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </mat-drawer>-->
+<!--</mat-drawer-container>-->

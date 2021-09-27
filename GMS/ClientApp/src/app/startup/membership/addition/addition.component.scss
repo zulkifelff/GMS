@@ -1,0 +1,50 @@
+:host {
+  display: block;
+}
+
+.addition-component
+{
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: -3px 0px 24px #00000029;
+  border-radius: 0px 0px 65px 65px;
+  opacity: 1;
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+.form-user-avatar-styling
+{
+  background: #E5E5E5 0% 0% no-repeat padding-box;
+  border: 3px solid #000000;
+  border-radius: 11px;
+  max-width: 136px;
+  max-height: 136px;
+}
+
+
+.subheading-form-user-styling
+{
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Helvetica, sans-serif;
+  letter-spacing: 0px;
+  color: #000000;
+}
+
+.label-input-file
+{
+  background: #CAA33E 0 0 no-repeat padding-box;
+  border: 1px solid #EABF51;
+  border-radius: 11px;
+  height: 60px;
+padding-top: 19px;
+  padding-bottom: 19px;
+  text-align: center;
+  color: #FFF;
+  width: 256px;
+}
+
+.label-input-file input[type="file"] {
+  display: none;
+}

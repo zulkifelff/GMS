@@ -1,0 +1,226 @@
+<section class="attendance-component mt-40 pl-15 pr-15">
+  <app-right-navigation [headingVar]="passingHeading">
+
+  </app-right-navigation>
+
+  <div class="row no-gutters clearfix mt-60 ">
+
+    <div class="container-fluid">
+
+      <div class="row no-gutters">
+        <div class="col-sm-6 col-md-3 stats-section">
+          <div (click)="triggerAddMember($event)" class="row no-gutters stats-section-styling">
+            <span class="icon icon-person"></span>
+            <span class="text">Add New Member</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 stats-section">
+          <div class="row no-gutters stats-section-styling">
+            <span class="icon icon-membership"></span>
+            <span class="text">Membership Renewal</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 stats-section">
+          <div class="row no-gutters stats-section-styling">
+            <span class="icon icon-person-edit"></span>
+            <span class="text">Edit Member</span>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 stats-section">
+          <div class="row no-gutters stats-section-styling">
+            <span class="icon icon-delete"></span>
+            <span class="text">Bulk Delete</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="container-fluid mt-40">
+      <div class="row no-gutters">
+        <div class="col-sm-12 col-md-6 stats-section">
+
+          <div class="row no-gutters attendance-section-styling">
+
+            <div class="col-sm-12 col-md-12 no-gutters">
+              <div class="float-left positional-table-filter-text">
+                Attendance
+              </div>
+
+              <div class="float-right">
+                <select class="filter-table-selection">
+                  <option selected value="01">
+                    Today
+                  </option>
+
+                  <!--                  <option selected value="02">-->
+                  <!--                    Yesterday-->
+                  <!--                  </option>-->
+                </select>
+              </div>
+            </div>
+
+            <div class="table-responsive row no-gutters mt-20">
+              <table class="table table-borderless table-attendence-design">
+                <thead>
+                <tr>
+                  <th scope="col">Member ID <span class="sorting-icon"></span></th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Date</th>
+
+                  <th scope="col">Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>001</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+
+                <tr>
+                  <td>002</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+                  <td>07:00 PM</td>
+
+                </tr>
+                <tr>
+                  <td>003</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+                <tr>
+                  <td>004</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+                <tr>
+                  <td>005</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+                <tr>
+                  <td>006</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+                <tr>
+                  <td>007</td>
+                  <td>Kazi Akbar</td>
+                  <td>21-Aug-1994</td>
+
+                  <td>07:00 PM</td>
+                </tr>
+
+
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-sm-12 col-md-6 stats-section">
+
+          <div class="row no-gutters statistics-section-styling">
+
+            <div class="row no-gutters ">
+
+              <div class="col-sm-12 col-md-12 no-gutters">
+                <div class="float-left positional-table-filter-text">
+                  Statistics
+                </div>
+
+                <div class="float-right">
+                  <a class="exclusive-link-style" href="#">See All Reports</a>
+
+                </div>
+              </div>
+
+              <div class="clearfix row col-sm-12 mt-20 true-stats">
+                <div class="col-sm-12 col-md-6 mt-20">
+                  <div class="row no-gutters individual-stats-section">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1 true-stat-main-heading">New Members</h5>
+                        <span class="true-stat-main-subheading">This Month
+                     </span>
+                      </div>
+                      <span class="ml-2 true-stats-text-style green-coloring">
+                       09
+                     </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 mt-20">
+                  <div class="row no-gutters individual-stats-section">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1 true-stat-main-heading">Attendance</h5>
+                        <span class="true-stat-main-subheading">This Month
+                     </span>
+                      </div>
+                      <span class="ml-2 true-stats-text-style red-coloring">
+                       10
+                     </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 mt-20">
+                  <div class="row no-gutters individual-stats-section">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1 true-stat-main-heading">Renewals</h5>
+                        <span class="true-stat-main-subheading">This Month
+                     </span>
+                      </div>
+                      <span class="ml-2 true-stats-text-style green-coloring">
+                       02
+                     </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 mt-20">
+                  <div class="row no-gutters individual-stats-section">
+                    <div class="media">
+                      <div class="media-body">
+                        <h5 class="mt-0 mb-1 true-stat-main-heading">New Members</h5>
+                        <span class="true-stat-main-subheading">This Month
+                     </span>
+                      </div>
+                      <span class="ml-2 true-stats-text-style black-coloring">
+                       50
+                     </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af471e934fcd49d38951224eff7e2038" Name="Diagram1" ZoomLevel="76">
+        <EntityTypeShape EntityType="GMSModel.Country" Width="1.5" PointX="0.75" PointY="7.25" />
+        <EntityTypeShape EntityType="GMSModel.Department" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="GMSModel.Designation" Width="1.5" PointX="0.75" PointY="10.5" />
+        <EntityTypeShape EntityType="GMSModel.EmployeeBiometricData" Width="1.5" PointX="5.25" PointY="7.25" />
+        <EntityTypeShape EntityType="GMSModel.Employee" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="GMSModel.Invoice" Width="1.5" PointX="5.25" PointY="13.375" />
+        <EntityTypeShape EntityType="GMSModel.Log" Width="1.5" PointX="5.25" PointY="4.5" />
+        <EntityTypeShape EntityType="GMSModel.Member" Width="1.5" PointX="3" PointY="13.75" />
+        <EntityTypeShape EntityType="GMSModel.Package" Width="1.5" PointX="3" PointY="19.25" />
+        <EntityTypeShape EntityType="GMSModel.PaymentMethod" Width="1.5" PointX="3" PointY="23.25" />
+        <EntityTypeShape EntityType="GMSModel.UserType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="GMSModel.FK_Employees_Countries" />
+        <AssociationConnector Association="GMSModel.FK_Members_Countries" />
+        <AssociationConnector Association="GMSModel.FK_Employees_Departments" />
+        <AssociationConnector Association="GMSModel.FK_Employees_Designations" />
+        <AssociationConnector Association="GMSModel.FK_EmployeeBiometricData_Employees" />
+        <AssociationConnector Association="GMSModel.FK_Logs_Employees" />
+        <AssociationConnector Association="GMSModel.FK_Invoices_Members" />
+        <AssociationConnector Association="GMSModel.FK_Invoices_Packages" />
+        <AssociationConnector Association="GMSModel.FK_Invoices_PaymentMethods" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
